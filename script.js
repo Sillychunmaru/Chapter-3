@@ -41,23 +41,35 @@ function showGames() {
         let gameInfo = "";
     
     // Open the paragraph
-    gameInfo += "<p>";
+    switch (gameResults[i]) {
+        case "W":
+            gameInfo +="<p class='win'>";
+            break;
+        case "L":
+            gameInfo += "<p class='lose'>";
+            break;
+        case "S":
+            gameInfo +="<p class='suspended'>";
+            break;
+        case "P":
+            gameInfo += "<p class='postponed'>";
+            break;
+    }
 
-    /* Display the game location
+    // Display the game location
     if (gameLocations[i] === "h") {
         gameInfo += "vs. ";
     } else if (gameLocations[i] === "a") {
         gameInfo += "@ ";
     }
-    */
-   
+    
     // Include the opponent
     gameInfo += gameOpponents[i] + "<br>";
 
     //include the result and score
     gameInfo += gameResults[i] + ": (" + runsScored[i] + " - " + runsAllowed[i] + ")";
 
-    /* Display innings played for suspended, shortened, or extrainning games
+    //Display innings played for suspended, shortened, or extrainning games
 if (gameInnings[i] < 5) {
     gameInfo += " [" + gameInnings[i]+"]***";
    } else if (gameInnings[i] < 9) {
@@ -65,12 +77,12 @@ if (gameInnings[i] < 5) {
    } else if (gameInnings[i] > 9) {
     gameInfo += " [" + gameInnings[i] + "]";
    }
-*/
+
     // Close the paragraph
     gameInfo += "</p>";
 
     // Write the information into a table cell
-    let tableCell = document.getElementbyId(gameDates[i]);
+    let tableCell = document.getElementById(gameDates[i]);
     tableCell.insertAdjacentHTML("beforeEnd", gameInfo)
     }
 }
