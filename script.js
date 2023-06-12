@@ -14,7 +14,7 @@
 // Days of the week
 let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
 
-    window.addEventListener("load", addWeekdays);
+    window.addEventListener("load", addWeekDays);
 
 // Function to write weekday names into the calendar
 function addWeekDays() {
@@ -43,19 +43,21 @@ function showGames() {
     // Open the paragraph
     gameInfo += "<p>";
 
-    // Display the game location
+    /* Display the game location
     if (gameLocations[i] === "h") {
         gameInfo += "vs. ";
     } else if (gameLocations[i] === "a") {
         gameInfo += "@ ";
     }
+    */
+   
     // Include the opponent
     gameInfo += gameOpponents[i] + "<br>";
 
     //include the result and score
-    gameInfo += gameResults[i] + ": (" + runScored[i] + " - " + runsAllowed[i] + ")";
+    gameInfo += gameResults[i] + ": (" + runsScored[i] + " - " + runsAllowed[i] + ")";
 
-    // Display innings played for suspended, shortened, or extrainning games
+    /* Display innings played for suspended, shortened, or extrainning games
 if (gameInnings[i] < 5) {
     gameInfo += " [" + gameInnings[i]+"]***";
    } else if (gameInnings[i] < 9) {
@@ -63,13 +65,13 @@ if (gameInnings[i] < 5) {
    } else if (gameInnings[i] > 9) {
     gameInfo += " [" + gameInnings[i] + "]";
    }
-
+*/
     // Close the paragraph
     gameInfo += "</p>";
 
     // Write the information into a table cell
-    let tableCell = Document.getElementbyId(gameDates[i]);
-    tableCell.insertAdjacentHTML("beforeEnd, gameInfo")
+    let tableCell = document.getElementbyId(gameDates[i]);
+    tableCell.insertAdjacentHTML("beforeEnd", gameInfo)
     }
 }
 
